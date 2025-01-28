@@ -11,7 +11,10 @@ const Navbar = () => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -33,40 +36,6 @@ const Navbar = () => {
           height={110}
         />
       </Link>
-      <div className="md:hidden relative" ref={dropdownRef}>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="bg-white bg-opacity-10 rounded-md p-3 cursor-pointer"
-        >
-          <Image src="/assets/menu.svg" alt="menu" width={20} height={20} />
-        </button>
-
-        {isOpen && (
-          <ul className="flex flex-col space-y-2 fixed z-50 top-28 right-5 py-8 px-5 bg-gradient-to-b from-[#0c2645] via-[#000000] to-[#000000] w-60 rounded-[33px]">
-            <Link href="/about">
-              <li>About</li>
-            </Link>
-            <Link href="/services">
-              <li>Services</li>
-            </Link>
-            <Link href="/services#portfolio">
-              <li>Portfolio</li>
-            </Link>
-            <Link href="/studio">
-              <li>Studio</li>
-            </Link>
-            <Link href="/foundation">
-              <li>Foundation</li>
-            </Link>
-            <Link href="/careers">
-              <li>Careers</li>
-            </Link>
-            <Link href="/blog">
-              <li>Blog</li>
-            </Link>
-          </ul>
-        )}
-      </div>
 
       <div className="hidden md:flex md:space-x-8 lg:space-x-16 items-center">
         <Link href="/">
@@ -102,6 +71,42 @@ const Navbar = () => {
           Book a Call
         </button>
       </div>
+
+      <div className="md:hidden relative" ref={dropdownRef}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="bg-white bg-opacity-10 rounded-md p-3 cursor-pointer"
+        >
+          <Image src="/assets/menu.svg" alt="menu" width={20} height={20} />
+        </button>
+
+        {isOpen && (
+          <ul className="flex flex-col space-y-2 fixed z-50 top-28 right-5 py-8 px-5 bg-gradient-to-b from-[#0c2645] via-[#000000] to-[#000000] w-60 rounded-[33px]">
+            <Link href="/about">
+              <li>About</li>
+            </Link>
+            <Link href="/services">
+              <li>Services</li>
+            </Link>
+            <Link href="/services#portfolio">
+              <li>Portfolio</li>
+            </Link>
+            <Link href="/studio">
+              <li>Studio</li>
+            </Link>
+            <Link href="/foundation">
+              <li>Foundation</li>
+            </Link>
+            <Link href="/careers">
+              <li>Careers</li>
+            </Link>
+            <Link href="/blog">
+              <li>Blog</li>
+            </Link>
+          </ul>
+        )}
+      </div>
+
     </nav>
   );
 };
